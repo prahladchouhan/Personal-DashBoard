@@ -4,13 +4,13 @@
   --tri1: #9ebc8a;
   --tri2: #d2d0a0;
   --text: rgb(15, 116, 85);
+  --font: rgb(87, 87, 87);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 html,
 body {
@@ -18,62 +18,57 @@ body {
   width: 100%;
   background-color: var(--pre);
   color: var(--tri2);
-  
-  
 }
-.main{
-    height: 100%;
-    width: 100%;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+.main {
+  height: 100%;
+  width: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
   background-color: var(--pre);
   color: var(--tri2);
-  
 
+  section.elemCard {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding: 30px 40px;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
 
-section.elemCard {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  padding: 30px 40px;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-
-
-  .elem {
-    height: 400px;
-    width: 250px;
-    border-radius: 10px;
-    position: relative;
-    transition: ease all .5s;
-    cursor: pointer;
-    box-shadow: #131312 2px 2px 5px;
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      overflow: hidden;
+    .elem {
+      height: 400px;
+      width: 250px;
       border-radius: 10px;
-    }
-    h2 {
-      position: absolute;
-      background-color: transparent;
-      color: white;
-      font-weight: 500;
-      top: 90%;
-      right: 5%;
+      position: relative;
+      transition: ease all 0.2s;
+      cursor: pointer;
+      box-shadow: #131312 2px 2px 5px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+     h2 {
+        position: absolute;
+        background-color: transparent;
+        color: white;
+        font-weight: 500;
+        top: 90%;
+        right: 5%;
+      }
     }
   }
-}
 
-.elem:hover {
-  scale: 0.98;
-}
+  .elem:hover {
+    scale: 0.92;
+  }
 
-.fullelem{
+  .fullelem {
     height: 100%;
     width: 100%;
     padding: 20px;
@@ -82,25 +77,144 @@ section.elemCard {
     position: absolute;
     background-color: var(--pre);
 
-    .back{
+    .back {
       position: absolute;
       right: 5%;
-      top:5%;
+      top: 5%;
       padding: 10px 12px;
-      font-size:40px;
+      font-size: 40px;
       font-weight: 700;
       border-radius: 50%;
       border: none;
       color: rgb(145, 4, 4);
-      background-color: var(--sec);
+      background-color: var(--tri1);
       cursor: pointer;
-      
     }
-    
-    .back:hover{
+
+    .back:hover {
       scale: 0.92;
     }
-    
-}
+  }
 
+  .Todo-fullpage {
+ 
+    h1 {
+      font-size: 30px;
+      margin: 20px;
+      margin-left: 50px;
+    }
+    .taskPage {
+      height: 80vh;
+      width: 100;
+      margin: 45px;
+      display: flex;
+      justify-content: space-between;
+
+      .leftTask {
+        height: 100%;
+        width: 35%;
+        background-color: var(--tri1);
+        border-radius: 10px;
+        .form {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          margin-top: 20px;
+          overflow: auto;
+
+          .Taskname {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            outline: none;
+            border: none;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: var(--tri2);
+          }
+          .TaskDetails {
+            padding: 15px;
+            height: 300px;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+              sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            overflow: hidden;
+            outline: none;
+            border: none;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: var(--tri2);
+          }
+          button{
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            outline: none;
+            border: none;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: var(--tri2);
+            color: var(--font);
+          }
+          button:active{
+            scale: 0.95;
+          }
+
+          .checkbox{
+            display: flex;
+            gap: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px;
+            margin-left: 20px;
+            color: rgb(87, 87, 87);
+            align-items: center;
+            .checkbox{
+              scale: 1.7;
+            }
+            .label-imp{
+              font-size: small;
+            }
+          }
+        }
+      }
+      .rightTask {
+        height: 100%;
+        width: 63%;
+        border-radius: 10px;
+        background-color: var(--tri1);
+        overflow: auto;
+
+        .tasklist{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 20px;
+          background-color: var(--tri2);
+          padding: 25px;
+          border-radius:10px ;
+
+          h2{
+            color: var(--font);
+            font-size: 20px;
+          }
+          button{
+            padding: 15px;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: rgb(0, 117, 0);
+            color:var(--tri2);
+            border: none;
+            border-radius:6px ;
+          }
+          button:active{
+            scale: 0.95;
+          }
+
+        }
+
+      }
+    }
+  }
 }
