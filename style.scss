@@ -1,0 +1,106 @@
+:root {
+  --pre: #537d5d;
+  --sec: #73946b;
+  --tri1: #9ebc8a;
+  --tri2: #d2d0a0;
+  --text: rgb(15, 116, 85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--pre);
+  color: var(--tri2);
+  
+  
+}
+.main{
+    height: 100%;
+    width: 100%;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  background-color: var(--pre);
+  color: var(--tri2);
+  
+
+
+section.elemCard {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  padding: 30px 40px;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+
+
+  .elem {
+    height: 400px;
+    width: 250px;
+    border-radius: 10px;
+    position: relative;
+    transition: ease all .5s;
+    cursor: pointer;
+    box-shadow: #131312 2px 2px 5px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    h2 {
+      position: absolute;
+      background-color: transparent;
+      color: white;
+      font-weight: 500;
+      top: 90%;
+      right: 5%;
+    }
+  }
+}
+
+.elem:hover {
+  scale: 0.98;
+}
+
+.fullelem{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    font-size: 40px;
+    display: none;
+    position: absolute;
+    background-color: var(--pre);
+
+    .back{
+      position: absolute;
+      right: 5%;
+      top:5%;
+      padding: 10px 12px;
+      font-size:40px;
+      font-weight: 700;
+      border-radius: 50%;
+      border: none;
+      color: rgb(145, 4, 4);
+      background-color: var(--sec);
+      cursor: pointer;
+      
+    }
+    
+    .back:hover{
+      scale: 0.92;
+    }
+    
+}
+
+}
