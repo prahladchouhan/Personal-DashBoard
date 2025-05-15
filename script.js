@@ -75,5 +75,43 @@ form.addEventListener("submit", function (event) {
 });
 
 }
-todoList();
+todoList(); 
+
+// Daily planner 
+
+function dailyPlanner() {
+    var dayPlanner = document.querySelector('.daily-planner')
+
+    var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+
+    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+
+
+    var wholeDaySum = ''
+    hours.forEach(function (elem, idx) {
+
+        var savedData = dayPlanData[idx] || ''
+
+        wholeDaySum = wholeDaySum + `<div class="planner-timer">
+    <p>${elem}</p>
+    <input id=${idx} type="text" placeholder="..." value=${savedData}>
+</div>`
+    })
+
+    dayPlanner.innerHTML = wholeDaySum
+
+
+    var dayPlannerInput = document.querySelectorAll('.planner-timer input')
+
+    dayPlannerInput.forEach(function (elem) {
+        elem.addEventListener('input', function () {
+            dayPlanData[elem.id] = elem.value
+
+            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
+        })
+    })
+}
+
+dailyPlanner();
+
 

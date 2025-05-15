@@ -242,4 +242,51 @@ body {
 }
 .main .Todo-fullpage .taskPage .rightTask .tasklist button:active {
   scale: 0.95;
+}
+
+.palnner-fullpage h1 {
+  font-size: 30px;
+  margin: 20px;
+  margin-left: 50px;
+}
+.palnner-fullpage .daily-planner {
+  height: 80vh;
+  margin: 45px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--sec);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
+  align-items: flex-start;
+  overflow: auto;
+}
+.palnner-fullpage .daily-planner .planner-timer {
+  display: flex;
+  width: 48%;
+  align-items: center;
+  border-radius: 20px;
+  border: none;
+  background: var(--tri1);
+  position: relative;
+  margin-bottom: 15px;
+}
+.palnner-fullpage .daily-planner .planner-timer p {
+  font-size: 18px;
+  color: var(--text);
+  position: absolute;
+  top: 2%;
+  left: 1%;
+}
+.palnner-fullpage .daily-planner .planner-timer input {
+  padding: 20px 40px;
+  width: 100%;
+  background: var(--tri1);
+  border-radius: 10px;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  outline: none;
+  color: var(--font);
 }/*# sourceMappingURL=style.css.map */
