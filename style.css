@@ -116,9 +116,6 @@ body {
 .main .fullelem .back:hover {
   scale: 0.92;
 }
-.main .Todo-fullpage {
-  display: block;
-}
 .main .Todo-fullpage h1 {
   font-size: 30px;
   margin: 20px;
