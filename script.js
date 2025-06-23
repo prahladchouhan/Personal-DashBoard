@@ -25,93 +25,106 @@ function elementFeatures() {
 elementFeatures();
 
 // Todo list code
-function todoList()
-{
+function todoList() {
+  let currentTask = [];
+  if (localStorage.getItem("currentTask")) {
+    currentTask = JSON.parse(localStorage.getItem("currentTask"));
+  } else {
+    console.log("Task list is Empty!");
+  }
   function renderALLTask() {
-  let allTask = document.querySelector(".rightTask");
-  var sum = "";
-  currentTask.forEach(function (elem) {
-    sum += `<div class="tasklist">
+    let allTask = document.querySelector(".rightTask");
+    var sum = "";
+    currentTask.forEach(function (elem) {
+      sum += `<div class="tasklist">
             <h2>${elem.task} <span class=${elem.imp}>imp</span> </h2>
             
             <button class="mention-btn">Mention As Completd</button>
           </div>`;
+    });
+    allTask.innerHTML = sum;
+    localStorage.setItem("currentTask", JSON.stringify(currentTask));
+
+    document.querySelectorAll(".tasklist button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        currentTask.splice(btn.id, 1);
+        renderALLTask();
+      });
+    });
+  }
+
+  let form = document.querySelector(".form");
+  let inputText = document.querySelector(".Taskname");
+  let inputDetails = document.querySelector(".TaskDetails");
+  let ImpMark = document.querySelector(".IMP");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    currentTask.push({
+      task: inputText.value,
+      details: inputDetails.value,
+      imp: ImpMark.checked,
+    });
+    renderALLTask();
+
+    inputText.value = "";
+    inputDetails.value = "";
+    ImpMark.checked = "";
   });
-  allTask.innerHTML = sum;
-  localStorage.setItem("currentTask", JSON.stringify(currentTask));
-
-  document.querySelectorAll('.tasklist button').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                currentTask.splice(btn.id, 1)
-                renderALLTask()
-            })
-        })
-
 }
+todoList();
 
-let form = document.querySelector(".form");
-let inputText = document.querySelector(".Taskname");
-let inputDetails = document.querySelector(".TaskDetails");
-let ImpMark = document.querySelector(".IMP");
-
-let currentTask = [];
-if (localStorage.getItem("currentTask")) {
-  currentTask = JSON.parse(localStorage.getItem("currentTask"));
-} else {
-  console.log("Task list is Empty!");
-}
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  currentTask.push({
-    task: inputText.value,
-    details: inputDetails.value,
-    imp: ImpMark.checked,
-  });
-  renderALLTask();
-
-  inputText.value = "";
-  inputDetails.value = "";
-  ImpMark.checked = "";
-});
-
-}
-todoList(); 
-
-// Daily planner 
+// Daily planner
 
 function dailyPlanner() {
-    var dayPlanner = document.querySelector('.daily-planner')
+  var dayPlanner = document.querySelector(".daily-planner");
 
-    var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+  var dayPlanData = JSON.parse(localStorage.getItem("dayPlanData")) || {};
 
-    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+  var hours = Array.from(
+    { length: 18 },
+    (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`
+  );
 
+  var wholeDaySum = "";
+  hours.forEach(function (elem, idx) {
+    var savedData = dayPlanData[idx] || "";
 
-    var wholeDaySum = ''
-    hours.forEach(function (elem, idx) {
-
-        var savedData = dayPlanData[idx] || ''
-
-        wholeDaySum = wholeDaySum + `<div class="planner-timer">
+    wholeDaySum =
+      wholeDaySum +
+      `<div class="planner-timer">
     <p>${elem}</p>
     <input id=${idx} type="text" placeholder="..." value=${savedData}>
-</div>`
-    })
+</div>`;
+  });
 
-    dayPlanner.innerHTML = wholeDaySum
+  dayPlanner.innerHTML = wholeDaySum;
 
+  var dayPlannerInput = document.querySelectorAll(".planner-timer input");
 
-    var dayPlannerInput = document.querySelectorAll('.planner-timer input')
+  dayPlannerInput.forEach(function (elem) {
+    elem.addEventListener("input", function () {
+      dayPlanData[elem.id] = elem.value;
 
-    dayPlannerInput.forEach(function (elem) {
-        elem.addEventListener('input', function () {
-            dayPlanData[elem.id] = elem.value
-
-            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
-        })
-    })
+      localStorage.setItem("dayPlanData", JSON.stringify(dayPlanData));
+    });
+  });
 }
-
 dailyPlanner();
 
+// motivational Quate!
+function motivationalQuote() {
+  let motivationalContent = document.querySelector(".Q-box-head");
+  let motivationalAuthor = document.querySelector(".Q-author-name");
+  async function fetchQuote() {
+    let response = await fetch(
+      "http://api.quotable.io/random" );
+    let data = await response.json();
+    console.log(data.author);
 
+    motivationalContent.innerHTML = data.content;
+    motivationalAuthor.innerHTML = data.author;
+  }
+  fetchQuote();
+}
+motivationalQuote();

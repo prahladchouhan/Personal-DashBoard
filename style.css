@@ -283,10 +283,65 @@ body {
   padding: 20px 40px;
   width: 100%;
   background: var(--tri1);
+  color: var(--font);
   border-radius: 10px;
   border: none;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   outline: none;
-  color: var(--font);
+}
+
+.motivational-fullpage .box {
+  height: 50%;
+  width: 70%;
+  background: var(--tri2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  filter: blur(100px);
+  transform: translate(-50%, -50%);
+}
+.motivational-fullpage .box-1 {
+  height: 50%;
+  width: 60%;
+  border-radius: 20px;
+  background: var(--pre);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  padding: 20px;
+}
+.motivational-fullpage .box-1 .heading-quote {
+  padding: 4px;
+  margin-top: 2px;
+  border-radius: 10px;
+  background: var(--sec);
+}
+.motivational-fullpage .box-1 .heading-quote h1 {
+  padding: 5px;
+  font-size: 30px;
+  color: var(--tri1);
+}
+.motivational-fullpage .box-1 .Quote-box {
+  height: 60%;
+  margin-top: 2px;
+  width: 100%;
+  border-radius: 10px;
+}
+.motivational-fullpage .box-1 .Quote-box .Q-box-head {
+  padding: 30px;
+  font-size: 30px;
+}
+.motivational-fullpage .box-1 .writer {
+  padding: 4px;
+  border-radius: 10px;
+  margin-top: 2px;
+  text-align: end;
+}
+.motivational-fullpage .box-1 .writer .Q-author-name {
+  padding: 5px;
+  font-size: 30px;
+  color: var(--tri2);
 }/*# sourceMappingURL=style.css.map */
