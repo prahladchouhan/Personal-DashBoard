@@ -5,6 +5,8 @@
   --tri2: #d2d0a0;
   --text: rgb(15, 116, 85);
   --font: rgb(87, 87, 87);
+  --green:rgb(5, 121, 130);
+  --red:rgb(167, 9, 9);
 }
 
 * {
@@ -367,8 +369,59 @@ body {
 
 .Timer-fullpage
 {
+  height: 100%;
+  width: 100%;
+  display: block;
   h1{
-    
+      font-size: 50px;
+  }
+  .timer{
+      padding: 30px;
+      height: 60%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    .box{
+      height: 200px;
+      width: 400px;
+      justify-items: center;
+      .session{
+        background: var(--green); 
+        padding: 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--tri2);
+      }
+      h1{
+        padding: 15px;
+        font-size: 10rem;
+        
+      }
+      .btn{
+        height: 50px;
+        width: 100px;
+        padding: 5px;
+        font-size: medium;
+        border-radius:5px;
+        background: var(--pre);
+        outline: none;
+        border: none;
+        margin:0px 10px ;
+        box-shadow: 1px 2px 4px #131312;
+        font-size: 20px;
+        color: var(--tri2);
+        font-weight: 700;
+         background: var(--pre);
+      }
+      .btn:hover{
+        background: var(--sec);
+        border-bottom: #131312 2px solid;
+        scale: 0.95;
+      }
+    }
   }
 }
 
