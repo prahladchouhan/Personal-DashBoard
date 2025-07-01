@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --pre: #537d5d;
   --sec: #73946b;
@@ -5,8 +6,12 @@
   --tri2: #d2d0a0;
   --text: rgb(15, 116, 85);
   --font: rgb(87, 87, 87);
-  --green:rgb(5, 121, 130);
-  --red:rgb(167, 9, 9);
+  --green: rgb(5, 121, 130);
+  --red: rgb(167, 9, 9);
+  --bg-light: #f5f5f5;
+  --text-light: #333;
+  --bg-dark: #1e1e1e;
+  --text-dark: #f5f5f5;
 }
 
 * {
@@ -19,35 +24,64 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-family: Arial, sans-serif;
   background-color: var(--pre);
   color: var(--tri2);
 }
 
-.nav {
-  background-color: var(--tri1);
-  color: var(--sec);
-  margin: 20px 40px 10px 40px;
-  height: 40%;
-  width: 95%;
-  border-radius: 10px;
-}
-.nav img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 1px 2px 4px var(--tri2);
-}
-.nav h2 {
-  position: absolute;
-  color: #131312;
-  top: 5%;
-  right: 20%;
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background-color: inherit;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+
+#datetime {
+  font-size: 1.2rem;
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #666;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.toggle-btn:hover {
+  background-color: #444;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .toggle-btn {
+    align-self: flex-end;
+  }
+}
 .main {
-  height: 65%;
+  height: 60%;
   width: 100%;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
@@ -245,13 +279,12 @@ body {
 .main .Todo-fullpage .taskPage .rightTask .tasklist button:active {
   scale: 0.95;
 }
-
-.palnner-fullpage h1 {
+.main .palnner-fullpage h1 {
   font-size: 30px;
   margin: 20px;
   margin-left: 50px;
 }
-.palnner-fullpage .daily-planner {
+.main .palnner-fullpage .daily-planner {
   height: 80vh;
   margin: 45px;
   padding: 20px;
@@ -264,7 +297,7 @@ body {
   align-items: flex-start;
   overflow: auto;
 }
-.palnner-fullpage .daily-planner .planner-timer {
+.main .palnner-fullpage .daily-planner .planner-timer {
   display: flex;
   width: 48%;
   align-items: center;
@@ -274,14 +307,14 @@ body {
   position: relative;
   margin-bottom: 15px;
 }
-.palnner-fullpage .daily-planner .planner-timer p {
+.main .palnner-fullpage .daily-planner .planner-timer p {
   font-size: 18px;
   color: var(--text);
   position: absolute;
   top: 2%;
   left: 1%;
 }
-.palnner-fullpage .daily-planner .planner-timer input {
+.main .palnner-fullpage .daily-planner .planner-timer input {
   padding: 20px 40px;
   width: 100%;
   background: var(--tri1);
@@ -292,8 +325,7 @@ body {
   font-weight: 600;
   outline: none;
 }
-
-.motivational-fullpage .box {
+.main .motivational-fullpage .box {
   height: 50%;
   width: 70%;
   background: var(--tri2);
@@ -303,7 +335,7 @@ body {
   filter: blur(100px);
   transform: translate(-50%, -50%);
 }
-.motivational-fullpage .box-1 {
+.main .motivational-fullpage .box-1 {
   height: 50%;
   width: 60%;
   border-radius: 20px;
@@ -315,48 +347,46 @@ body {
   z-index: 9;
   padding: 20px;
 }
-.motivational-fullpage .box-1 .heading-quote {
+.main .motivational-fullpage .box-1 .heading-quote {
   padding: 4px;
   margin-top: 2px;
   border-radius: 10px;
   background: var(--sec);
 }
-.motivational-fullpage .box-1 .heading-quote h1 {
+.main .motivational-fullpage .box-1 .heading-quote h1 {
   padding: 5px;
   font-size: 30px;
   color: var(--tri1);
 }
-.motivational-fullpage .box-1 .Quote-box {
+.main .motivational-fullpage .box-1 .Quote-box {
   height: 60%;
   margin-top: 2px;
   width: 100%;
   border-radius: 10px;
 }
-.motivational-fullpage .box-1 .Quote-box .Q-box-head {
+.main .motivational-fullpage .box-1 .Quote-box .Q-box-head {
   padding: 30px;
   font-size: 30px;
 }
-.motivational-fullpage .box-1 .writer {
+.main .motivational-fullpage .box-1 .writer {
   padding: 4px;
   border-radius: 10px;
   margin-top: 2px;
   text-align: end;
 }
-.motivational-fullpage .box-1 .writer .Q-author-name {
+.main .motivational-fullpage .box-1 .writer .Q-author-name {
   padding: 5px;
   font-size: 30px;
   color: var(--tri2);
 }
-
-.Timer-fullpage {
+.main .Timer-fullpage {
   height: 100%;
   width: 100%;
-  display: block;
 }
-.Timer-fullpage h1 {
+.main .Timer-fullpage h1 {
   font-size: 50px;
 }
-.Timer-fullpage .timer {
+.main .Timer-fullpage .timer {
   padding: 30px;
   height: 60%;
   width: 100%;
@@ -364,12 +394,12 @@ body {
   justify-content: center;
   align-items: center;
 }
-.Timer-fullpage .timer .box {
+.main .Timer-fullpage .timer .box {
   height: 200px;
   width: 400px;
   justify-items: center;
 }
-.Timer-fullpage .timer .box .session {
+.main .Timer-fullpage .timer .box .session {
   background: var(--green);
   padding: 15px;
   border-radius: 20px;
@@ -377,11 +407,11 @@ body {
   font-size: 20px;
   color: var(--tri2);
 }
-.Timer-fullpage .timer .box h1 {
+.main .Timer-fullpage .timer .box h1 {
   padding: 15px;
   font-size: 10rem;
 }
-.Timer-fullpage .timer .box .btn {
+.main .Timer-fullpage .timer .box .btn {
   height: 50px;
   width: 100px;
   padding: 5px;
@@ -397,8 +427,175 @@ body {
   font-weight: 700;
   background: var(--pre);
 }
-.Timer-fullpage .timer .box .btn:hover {
+.main .Timer-fullpage .timer .box .btn:hover {
   background: var(--sec);
   border-bottom: #131312 2px solid;
   scale: 0.95;
+}
+
+footer {
+  padding: 0px 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--tri2);
+}
+footer p b {
+  color: rgb(103, 3, 3);
+}
+
+/* ✅ Mobile View Optimization - for screens up to 600px wide */
+/* ✅ Mobile View Optimization (except planner and timer) */
+/* === Theme Variations === */
+.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.green-mode {
+  background-color: var(--pre);
+  color: var(--tri2);
+}
+
+/* Toggle button appearance per theme */
+body.light-mode .toggle-btn {
+  background: #ddd;
+  color: #333;
+}
+
+body.dark-mode .toggle-btn {
+  background: #444;
+  color: #eee;
+}
+
+body.green-mode .toggle-btn {
+  background: var(--green);
+  color: #fff;
+}
+
+/* Improve footer on all views */
+footer {
+  flex-direction: column;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .main section.elemCard {
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+    position: static;
+  }
+  .main .Todo-fullpage .taskPage {
+    flex-direction: column;
+    margin: 10px;
+    height: auto;
+  }
+  .main .Todo-fullpage .taskPage .leftTask,
+  .main .Todo-fullpage .taskPage .rightTask {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .main .motivational-fullpage .box-1 {
+    width: 90%;
+  }
+  .main .Timer-fullpage .timer .box {
+    width: 90%;
+  }
+  .main .Timer-fullpage .timer .box h1 {
+    font-size: 4rem;
+  }
+}
+/* === THEME-SPECIFIC SECTION STYLES === */
+/* Light Theme */
+body.light-mode .main,
+body.light-mode .main .fullelem {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light-mode .elem,
+body.light-mode .rightTask,
+body.light-mode .leftTask,
+body.light-mode .daily-planner,
+body.light-mode .box-1,
+body.light-mode .tasklist {
+  background-color: #ffffff;
+  color: #222;
+}
+
+body.light-mode .btn,
+body.light-mode .form button {
+  background-color: #dcdcdc;
+  color: #333;
+}
+
+/* Dark Theme */
+body.dark-mode .main,
+body.dark-mode .main .fullelem {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .elem,
+body.dark-mode .rightTask,
+body.dark-mode .leftTask,
+body.dark-mode .daily-planner,
+body.dark-mode .box-1,
+body.dark-mode .tasklist {
+  background-color: #2a2a2a;
+  color: #eee;
+}
+
+body.dark-mode .btn,
+body.dark-mode .form button {
+  background-color: #3d3d3d;
+  color: #eee;
+}
+
+/* Green Theme */
+body.green-mode .main,
+body.green-mode .main .fullelem {
+  background-color: var(--pre);
+  color: var(--tri2);
+}
+
+body.green-mode .elem,
+body.green-mode .rightTask,
+body.green-mode .leftTask,
+body.green-mode .daily-planner,
+body.green-mode .box-1,
+body.green-mode .tasklist {
+  background-color: var(--tri1);
+  color: var(--font);
+}
+
+body.green-mode .btn,
+body.green-mode .form button {
+  background-color: var(--tri2);
+  color: var(--font);
+}
+
+body,
+.main,
+.fullelem,
+.elem,
+.leftTask,
+.rightTask,
+.daily-planner,
+.box-1,
+.tasklist,
+.btn,
+.form button {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }/*# sourceMappingURL=style.css.map */

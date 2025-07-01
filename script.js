@@ -24,6 +24,48 @@ function elementFeatures() {
 }
 elementFeatures();
 
+
+
+
+// nav Date/time  fetch
+function DateTime()
+{
+   function updateDateTime() {
+      const now = new Date();
+
+      const time = now.toLocaleTimeString('en-IN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+
+      const date = now.toLocaleDateString('en-IN', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+
+      document.getElementById('datetime').textContent = `${date} | ${time}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+}
+DateTime();
+
+let currentTheme = 0;
+  const themes = ['light-mode', 'dark-mode', 'green-mode'];
+
+  function toggleDarkMode() {
+    document.body.classList.remove(...themes);
+    currentTheme = (currentTheme + 1) % themes.length;
+    document.body.classList.add(themes[currentTheme]);
+  }
+
+toggleDarkMode(); 
+
 // Todo list code
 function todoList() {
   let currentTask = [];
@@ -119,7 +161,7 @@ function motivationalQuote() {
   async function fetchQuote() {
     let response = await fetch("http://api.quotable.io/random");
     let data = await response.json();
-    console.log(data.author);
+    // console.log(data.author);
 
     motivationalContent.innerHTML = data.content;
     motivationalAuthor.innerHTML = data.author;
@@ -129,6 +171,7 @@ function motivationalQuote() {
 motivationalQuote();
 
 // Pomodora Timer!
+function Pomodorotimer() {
 let Timer = document.querySelector(".box h1");
 let StartBtn = document.querySelector(".start-Btn");
 let PauseBtn = document.querySelector(".pause-Btn");
@@ -148,7 +191,6 @@ function updateTimer() {
   ).padStart("2", "0")}`;
 }
 //start function !
-function Pomodorotimer() {
   function startTimer() {
     clearInterval(timerInterval);
 
@@ -165,7 +207,7 @@ function Pomodorotimer() {
           session.style.backgroundColor = "var(--red)";
           totalSeconds = 5 * 60;
         }
-      }, 1000);
+      }, 10);
     } else {
       timerInterval = setInterval(function () {
         if (totalSeconds > 0) {
@@ -179,7 +221,7 @@ function Pomodorotimer() {
           session.style.backgroundColor = "var(--green)";
           totalSeconds = 25 * 60;
         }
-      }, 1000);
+      }, 10);
     }
   }
   //reset Function!

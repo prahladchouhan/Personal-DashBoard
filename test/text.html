@@ -1,0 +1,327 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar with Theme Toggle</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-light: #f8fafc;
+      --text-dark: #f1f5f9;
+      --text-light: #1e293b;
+      --accent: #00f7ff;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    nav {
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--glass-bg);
+      animation: slideDown 0.6s ease;
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: currentColor;
+      transition: 0.3s;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 20px;
+      background: none;
+      border: none;
+      color: inherit;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: rgba(0, 0, 0, 0.85);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      body.light .nav-links {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">✨Brand</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌓</button>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <div></div><div></div><div></div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMenu(menu) {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+
+      menu.classList.toggle("open");
+      if (menu.classList.contains("open")) {
+        menu.children[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+        menu.children[1].style.opacity = "0";
+        menu.children[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
+      } else {
+        menu.children[0].style.transform = "none";
+        menu.children[1].style.opacity = "1";
+        menu.children[2].style.transform = "none";
+      }
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle("light");
+      localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+    }
+
+    // Apply theme on load
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    });
+  </script>
+
+</body>
+</html>
+     -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar with DateTime & Dark Mode</title>
+  <style>
+    :root {
+      --bg-light: #f5f5f5;
+      --text-light: #333;
+      --bg-dark: #1e1e1e;
+      --text-dark: #f5f5f5;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background-color: inherit;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .nav img {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    #datetime {
+      font-size: 1.2rem;
+    }
+
+    .toggle-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border: none;
+      background-color: #666;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .toggle-btn:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .toggle-btn {
+        align-self: flex-end;
+      }
+    }
+    .light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+.green-mode {
+  background-color: var(--pre);
+  color: var(--tri2);
+}
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <img
+      src="https://images.unsplash.com/photo-1713098953325-d44e3740b75e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXIlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D"
+      alt="Cover Image"
+    />
+    <h2 id="datetime">Loading...</h2>
+    <button class="toggle-btn" onclick="toggleDarkMode()"></button>
+  </nav>
+
+  <script>
+    // Update time every second
+    function updateDateTime() {
+      const now = new Date();
+      const formatted = now.toLocaleString();
+      document.getElementById("datetime").textContent = formatted;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // Dark mode toggle
+     let currentTheme = 0;
+  const themes = ['light-mode', 'dark-mode', 'green-mode'];
+    function toggleDarkMode() {
+    document.body.classList.remove(...themes);
+    currentTheme = (currentTheme + 1) % themes.length;
+    document.body.classList.add(themes[currentTheme]);
+  }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

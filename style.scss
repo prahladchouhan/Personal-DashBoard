@@ -5,8 +5,12 @@
   --tri2: #d2d0a0;
   --text: rgb(15, 116, 85);
   --font: rgb(87, 87, 87);
-  --green:rgb(5, 121, 130);
-  --red:rgb(167, 9, 9);
+  --green: rgb(5, 121, 130);
+  --red: rgb(167, 9, 9);
+  --bg-light: #f5f5f5;
+  --text-light: #333;
+  --bg-dark: #1e1e1e;
+  --text-dark: #f5f5f5;
 }
 
 * {
@@ -18,33 +22,63 @@ html,
 body {
   height: 100%;
   width: 100%;
+   font-family: Arial, sans-serif;
   background-color: var(--pre);
   color: var(--tri2);
 }
-.nav {
-  background-color: var(--tri1);
-  color: var(--sec);
-  margin: 20px 40px 10px 40px;
-  height: 40%;
-  width: 95%;
-  border-radius: 10px;
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    // position: relative;
-    border-radius: 10px;
-    box-shadow: 1px 2px 4px var(--tri2);
-  }
-  h2 {
-    position: absolute;
-    color: #131312;
-    top: 5%;
-    right: 20%;
-  }
-}
+.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+ .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background-color: inherit;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .nav img {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    #datetime {
+      font-size: 1.2rem;
+    }
+
+    .toggle-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border: none;
+      background-color: #666;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .toggle-btn:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .toggle-btn {
+        align-self: flex-end;
+      }
+    }
 .main {
-  height: 65%;
+  height: 60%;
   width: 100%;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
@@ -257,186 +291,343 @@ body {
       }
     }
   }
-}
-.palnner-fullpage {
-  // display: block;
-  h1 {
-    font-size: 30px;
-    margin: 20px;
-    margin-left: 50px;
-  }
-  .daily-planner {
-    height: 80vh;
-    margin: 45px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: var(--sec);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 15px;
-    align-items: flex-start;
-    overflow: auto;
 
-    .planner-timer {
+  .palnner-fullpage {
+    // display: block;
+    h1 {
+      font-size: 30px;
+      margin: 20px;
+      margin-left: 50px;
+    }
+    .daily-planner {
+      height: 80vh;
+      margin: 45px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: var(--sec);
       display: flex;
-      width: 48%;
-      align-items: center;
-      border-radius: 20px;
-      border: none;
-      background: var(--tri1);
-      position: relative;
-      margin-bottom: 15px;
-      p {
-        font-size: 18px;
-        color: var(--text);
-        position: absolute;
-        top: 2%;
-        left: 1%;
-      }
-      input {
-        padding: 20px 40px;
-        width: 100%;
-        background: var(--tri1);
-        color: var(--font);
-        border-radius: 10px;
-        border: none;
-        font-size: 28px;
-        font-weight: 600;
-        outline: none;
-      }
-    }
-  }
-}
-.motivational-fullpage {
-  // display: block;
-  .box {
-    height: 50%;
-    width: 70%;
-    background: var(--tri2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    filter: blur(100px);
-    transform: translate(-50%, -50%);  
-    }
-  .box-1 {
-    height: 50%;
-    width: 60%;
-    border-radius: 20px;
-    background: var(--pre);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9;
-    padding: 20px;
-    .heading-quote{
-      padding: 4px;
-      margin-top: 2px;
-      border-radius: 10px;
-      background: var(--sec);
-      h1{
-        padding: 5px;
-        font-size: 30px;
-        color: var(--tri1);
-      }
-    }
-    .Quote-box{
-      height: 60%;
-      margin-top: 2px;
-      width: 100%;
-      border-radius: 10px;
-      // background: var(--tri1);
-      .Q-box-head{
-        padding: 30px;
-        font-size:30px;
-      }
-    }
-    .writer{
-      padding: 4px;
-      border-radius: 10px;
-      margin-top: 2px;
-      text-align: end;
-      .Q-author-name{
-        padding: 5px;
-        font-size: 30px;
-        color: var(--tri2);
-      }
-    }
-  }
-}
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 15px;
+      align-items: flex-start;
+      overflow: auto;
 
-.Timer-fullpage
-{
-  height: 100%;
-  width: 100%;
-  display: block;
-  h1{
-      font-size: 50px;
+      .planner-timer {
+        display: flex;
+        width: 48%;
+        align-items: center;
+        border-radius: 20px;
+        border: none;
+        background: var(--tri1);
+        position: relative;
+        margin-bottom: 15px;
+        p {
+          font-size: 18px;
+          color: var(--text);
+          position: absolute;
+          top: 2%;
+          left: 1%;
+        }
+        input {
+          padding: 20px 40px;
+          width: 100%;
+          background: var(--tri1);
+          color: var(--font);
+          border-radius: 10px;
+          border: none;
+          font-size: 28px;
+          font-weight: 600;
+          outline: none;
+        }
+      }
+    }
   }
-  .timer{
+  .motivational-fullpage {
+    // display: block;
+    .box {
+      height: 50%;
+      width: 70%;
+      background: var(--tri2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      filter: blur(100px);
+      transform: translate(-50%, -50%);
+    }
+    .box-1 {
+      height: 50%;
+      width: 60%;
+      border-radius: 20px;
+      background: var(--pre);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9;
+      padding: 20px;
+      .heading-quote {
+        padding: 4px;
+        margin-top: 2px;
+        border-radius: 10px;
+        background: var(--sec);
+        h1 {
+          padding: 5px;
+          font-size: 30px;
+          color: var(--tri1);
+        }
+      }
+      .Quote-box {
+        height: 60%;
+        margin-top: 2px;
+        width: 100%;
+        border-radius: 10px;
+        // background: var(--tri1);
+        .Q-box-head {
+          padding: 30px;
+          font-size: 30px;
+        }
+      }
+      .writer {
+        padding: 4px;
+        border-radius: 10px;
+        margin-top: 2px;
+        text-align: end;
+        .Q-author-name {
+          padding: 5px;
+          font-size: 30px;
+          color: var(--tri2);
+        }
+      }
+    }
+  }
+
+  .Timer-fullpage {
+    height: 100%;
+    width: 100%;
+
+    h1 {
+      font-size: 50px;
+    }
+    .timer {
       padding: 30px;
       height: 60%;
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      
-    .box{
-      height: 200px;
-      width: 400px;
-      justify-items: center;
-      .session{
-        background: var(--green); 
-        padding: 15px;
-        border-radius: 20px;
-        font-weight: 600;
-        font-size: 20px;
-        color: var(--tri2);
-      }
-      h1{
-        padding: 15px;
-        font-size: 10rem;
-        
-      }
-      .btn{
-        height: 50px;
-        width: 100px;
-        padding: 5px;
-        font-size: medium;
-        border-radius:5px;
-        background: var(--pre);
-        outline: none;
-        border: none;
-        margin:0px 10px ;
-        box-shadow: 1px 2px 4px #131312;
-        font-size: 20px;
-        color: var(--tri2);
-        font-weight: 700;
-         background: var(--pre);
-      }
-      .btn:hover{
-        background: var(--sec);
-        border-bottom: #131312 2px solid;
-        scale: 0.95;
+
+      .box {
+        height: 200px;
+        width: 400px;
+        justify-items: center;
+        .session {
+          background: var(--green);
+          padding: 15px;
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 20px;
+          color: var(--tri2);
+        }
+        h1 {
+          padding: 15px;
+          font-size: 10rem;
+        }
+        .btn {
+          height: 50px;
+          width: 100px;
+          padding: 5px;
+          font-size: medium;
+          border-radius: 5px;
+          background: var(--pre);
+          outline: none;
+          border: none;
+          margin: 0px 10px;
+          box-shadow: 1px 2px 4px #131312;
+          font-size: 20px;
+          color: var(--tri2);
+          font-weight: 700;
+          background: var(--pre);
+        }
+        .btn:hover {
+          background: var(--sec);
+          border-bottom: #131312 2px solid;
+          scale: 0.95;
+        }
       }
     }
   }
 }
+footer {
+  padding: 0px 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--tri2);
+  p {
+    b {
+      color: rgb(103, 3, 3);
+    }
+  }
+}
 
-// footer{
-//  display: flex;
-// padding:0px 10px;
-//  justify-content: center;
-//   align-items: flex-start;
-//   font-size: 20px;
-//   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-//   color:var(--tri2);
-//    p{
+/* ✅ Mobile View Optimization - for screens up to 600px wide */
+/* ✅ Mobile View Optimization (except planner and timer) */
 
-//     b{
-//     color: rgb(103, 3, 3);
-//     }
-//    }
-// }
+// ai optimize
+/* === Theme Variations === */
+.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+.green-mode {
+  background-color: var(--pre);
+  color: var(--tri2);
+}
+
+/* Toggle button appearance per theme */
+body.light-mode .toggle-btn {
+  background: #ddd;
+  color: #333;
+}
+body.dark-mode .toggle-btn {
+  background: #444;
+  color: #eee;
+}
+body.green-mode .toggle-btn {
+  background: var(--green);
+  color: #fff;
+}
+
+/* Improve footer on all views */
+footer {
+  flex-direction: column;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .main section.elemCard {
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+    position: static;
+  }
+
+  .main .Todo-fullpage .taskPage {
+    flex-direction: column;
+    margin: 10px;
+    height: auto;
+  }
+
+  .main .Todo-fullpage .taskPage .leftTask,
+  .main .Todo-fullpage .taskPage .rightTask {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main .motivational-fullpage .box-1 {
+    width: 90%;
+  }
+
+  .main .Timer-fullpage .timer .box {
+    width: 90%;
+  }
+
+  .main .Timer-fullpage .timer .box h1 {
+    font-size: 4rem;
+  }
+}
+
+
+/* === THEME-SPECIFIC SECTION STYLES === */
+
+/* Light Theme */
+body.light-mode .main,
+body.light-mode .main .fullelem {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light-mode .elem,
+body.light-mode .rightTask,
+body.light-mode .leftTask,
+body.light-mode .daily-planner,
+body.light-mode .box-1,
+body.light-mode .tasklist {
+  background-color: #ffffff;
+  color: #222;
+}
+
+body.light-mode .btn,
+body.light-mode .form button {
+  background-color: #dcdcdc;
+  color: #333;
+}
+
+/* Dark Theme */
+body.dark-mode .main,
+body.dark-mode .main .fullelem {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .elem,
+body.dark-mode .rightTask,
+body.dark-mode .leftTask,
+body.dark-mode .daily-planner,
+body.dark-mode .box-1,
+body.dark-mode .tasklist {
+  background-color: #2a2a2a;
+  color: #eee;
+}
+
+body.dark-mode .btn,
+body.dark-mode .form button {
+  background-color: #3d3d3d;
+  color: #eee;
+}
+
+/* Green Theme */
+body.green-mode .main,
+body.green-mode .main .fullelem {
+  background-color: var(--pre);
+  color: var(--tri2);
+}
+
+body.green-mode .elem,
+body.green-mode .rightTask,
+body.green-mode .leftTask,
+body.green-mode .daily-planner,
+body.green-mode .box-1,
+body.green-mode .tasklist {
+  background-color: var(--tri1);
+  color: var(--font);
+}
+
+body.green-mode .btn,
+body.green-mode .form button {
+  background-color: var(--tri2);
+  color: var(--font);
+}
+
+body,
+.main,
+.fullelem,
+.elem,
+.leftTask,
+.rightTask,
+.daily-planner,
+.box-1,
+.tasklist,
+.btn,
+.form button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
